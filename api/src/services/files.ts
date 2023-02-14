@@ -45,7 +45,7 @@ export class FilesService extends ItemsService {
 
 		const payload = clone(data);
 
-		if ('folder' in payload === false) {
+		if (!payload.folder) {
 			const settings = await this.knex.select('storage_default_folder').from('directus_settings').first();
 
 			if (settings?.storage_default_folder) {
